@@ -1,0 +1,32 @@
+.infoTabsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid #ccc;
+}
+
+.tabs {
+  flex: 1;
+  border-right: 2px solid #ccc;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.3s ease;
+  min-height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.tabs:last-child {
+  border-right: none;
+}
+
+.tabs:hover {
+  background-color: #fff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
