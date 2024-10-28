@@ -10,6 +10,15 @@ export const data = [
   ["Fri", 68, 66, 22, 15],
 ];
 
+export const dataLineTest = [
+  ["Age", "Weight"],
+  [4, 16],
+  [8, 25],
+  [12, 40],
+  [16, 55],
+  [20, 70],
+];
+
 export const options = {
   legend: "none",
   bar: { groupWidth: "100%" }, // Remove space between bars.
@@ -22,29 +31,24 @@ export const options = {
 export const LineChart = () => {
 
   return (
-    <div>
+    <div className='chartContainer'>
       <Chart
         chartType="LineChart"
-        data={[
-          ["Age", "Weight"],
-          [4, 16],
-          [8, 25],
-          [12, 40],
-          [16, 55],
-          [20, 70],
-        ]}
+        data={dataLineTest}
         options={{
           title: "Average Weight by Age",
         }}
+        width="100%"
+        height="100%"
         legendToggle
       />
-      <Chart
+      {/* <Chart
         chartType="CandlestickChart"
         width="100%"
         height="400px"
         data={data}
         options={options}
-      />
+      /> */}
     </div>
   );
 }
