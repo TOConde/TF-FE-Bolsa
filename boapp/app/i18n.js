@@ -10,28 +10,24 @@ i18next
     resources: {
       es: {
         translation: {
-          hello: "Hello {{name}} how are you this {{day}}",
-          world: "World",
-          title: " este es el titulo de mi pagina web",
           buttons: {
+            sobreNosotros: "Sobre nosotros",
             contacto: "Contacto",
           },
         },
       },
       en: {
         translation: {
-          hello: "Bonjour  {{name}} ",
-          world: "Monde",
           buttons: {
+            sobreNosotros: "About us",
             contacto: "Contact",
           },
         }
       },
       tur: {
         translation: {
-          hello: "Bonjour  {{name}} ",
-          world: "Monde",
           buttons: {
+            sobreNosotros: "Hakkımızda",
             contacto: "İletişim",
           },
         }

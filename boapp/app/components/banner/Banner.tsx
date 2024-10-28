@@ -4,7 +4,7 @@ import { LanguageBttn } from './languageBttn/LanguageBttn';
 
 export const Banner = () => {
   return (
-    <div className='banner'>
+    <div className='banner fixed-top'>
       <img className='logoBanner' src="./img/BIST.png"/>
       <InfoTabs />
       <LanguageBttn />

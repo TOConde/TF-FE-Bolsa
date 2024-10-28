@@ -6,7 +6,7 @@ export const InfoTabs = () => {
   
   return (
     <div className='infoTabsContainer'>
-      <a href='#about-us' className='tabs'>Sobre nosotros</a>
+      <a href='#about-us' className='tabs'>{t('buttons.sobreNosotros')}</a>
       <a href='#contact' className='tabs'>{t('buttons.contacto')}</a>
     </div>
   );
