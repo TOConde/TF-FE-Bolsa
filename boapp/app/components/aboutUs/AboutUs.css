@@ -1,0 +1,11 @@
+.containerAboutUs{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 55px;
+}
+
+.containerAboutUs p {
+  padding: 15px 45px 0px 45px;
+  text-align: center;
+}
