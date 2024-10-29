@@ -32,7 +32,7 @@ export const LineChart = () => {
 
   return (
     <div className='chartContainer'>
-      <Chart
+      <Chart      
         chartType="LineChart"
         data={dataLineTest}
         options={{
