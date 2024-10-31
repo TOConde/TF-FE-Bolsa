@@ -6,6 +6,7 @@ import styles from "./page.module.css";
 import './i18n';
 import { MainBody } from './components/mainBody/MainBody';
 import AboutUs from './components/aboutUs/AboutUs';
+import Footer from './components/footer/Footer';
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <Banner />
       <MainBody />
       <AboutUs />
+      <Footer />
     </main>
   );
 }
