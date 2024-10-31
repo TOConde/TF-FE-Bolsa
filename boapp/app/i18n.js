@@ -19,6 +19,13 @@ i18next
             sobreNosotros: "Sobre nosotros",
             contacto: "Contacto",
           },
+          footer: {
+            sobreNosotros: "Sobre nosotros",
+            contacto: "Contacto",
+            politicaPrivacidad: "Politica de Privacidad",
+            terminoServicio: "Términos de Servicio",
+            derechosReservados: "Todos los derechos reservados."
+          },
         },
       },
       en: {
@@ -29,8 +36,15 @@ i18next
           sobreNosotrosP3: "With its advanced technologies and focus on innovation, Borsa İstanbul strives to be one of the most competitive stock exchanges globally. The market is governed by strict regulatory standards aligned with international best practices, ensuring transparency and investor protection.",
           sobreNosotrosP4: "Furthermore, Borsa İstanbul is committed to fostering sustainability by offering investment products that support environmentally responsible companies and projects. This commitment strengthens its role in the global financial arena, making the exchange a relevant actor in sustainable economic development.",
           buttons: {
-            sobreNosotros: "About us",
+            sobreNosotros: "About Us",
             contacto: "Contact",
+          },
+          footer: {
+            sobreNosotros: "About Us",
+            contacto: "Contact",
+            politicaPrivacidad: "Privacy Policy",
+            terminoServicio: "Terms of Service",
+            derechosReservados: "All rights reserved."
           },
         }
       },
@@ -44,6 +58,13 @@ i18next
           buttons: {
             sobreNosotros: "Hakkımızda",
             contacto: "İletişim",
+          },
+          footer: {
+            sobreNosotros: "Hakkımızda",
+            contacto: "İletişim",
+            politicaPrivacidad: "Gizlilik Politikası",
+            terminoServicio: "Hizmet Şartları",
+            derechosReservados: "Tüm hakları saklıdır."
           },
         }
       }
