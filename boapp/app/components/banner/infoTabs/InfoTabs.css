@@ -8,6 +8,7 @@
 .tabs {
   flex: 1;
   border-right: 2px solid #ccc;
+  padding: 0 25px;
   text-align: center;
   text-decoration: none;
   color: inherit;
