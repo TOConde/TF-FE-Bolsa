@@ -1,0 +1,11 @@
+.containerButtonsSide {
+  display:  flex;
+  justify-content: center;
+
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.containerButtonsSide button:first-child {
+  margin-right: 10px;
+}
