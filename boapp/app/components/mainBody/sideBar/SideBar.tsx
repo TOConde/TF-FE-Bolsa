@@ -1,3 +1,4 @@
+import ButtonsSide from './buttonsSide/ButtonsSide';
 import Cotizations from './cotizations/Cotizations';
 import Details from './details/Details';
 import './SideBar.css'
@@ -11,6 +12,7 @@ export default function SideBar({ onSelectCompany, selectedCompany }: SideBarPro
 
   return (
     <div className='containerSideBar'>
+      <ButtonsSide />
       <Cotizations onSelectCompany={onSelectCompany} />
       <Details company={selectedCompany} />
     </div>
