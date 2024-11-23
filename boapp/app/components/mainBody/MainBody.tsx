@@ -1,18 +1,41 @@
-import { useState } from 'react';
-import { LineChart } from './chart/Chart';
+import { useEffect, useState } from 'react';
+import { data, LineChart } from './chart/Chart';
 import './MainBody.css'
 import SideBar from './sideBar/SideBar';
+import { getAllEmpresas } from '@/app/services/Empresa';
+import { Empresa } from '@/app/types/empresa';
 
 export const MainBody = () => {
-  const companies = ['Empresa 1', 'Empresa 2', 'Empresa 3', 'Empresa 4', 'Empresa 5',  'Empresa 6', 'Empresa 7'];
-  const [selectedCompany, setSelectedCompany] = useState<string | null>(companies[0]);
+  const [selectedEmpresa, setSelectedEmpresa] = useState<Empresa | null>(null);
+  const [empresas, setEmpresas] = useState<Empresa[]>([]);
+
+  useEffect(() => {
+    const fetchEmpresas = async () => {
+      try {
+        const data = await getAllEmpresas();
+        setEmpresas(data);
+        if (data.length > 0) {
+          setSelectedEmpresa(data[0])
+        }
+      } catch (error) {
+        console.error('Error fetching empresas:', error);
+      }
+    }
+
+    fetchEmpresas();
+  }, []);
+
+  const handleSelectEmpresa = (id: string) => {
+    const empresa = empresas.find((e) => e.id === id);
+    setSelectedEmpresa(empresa || null);
+  };
   
   return (
     <div id='home' className='mainContainer'>
       <div className='containerGrafico'>
-        <LineChart />
+        <LineChart /* selectedEmpresa={selectedEmpresa} */ />
       </div>
-      <SideBar onSelectCompany={setSelectedCompany} selectedCompany={selectedCompany} />
+      <SideBar empresas={empresas} onSelectEmpresa={handleSelectEmpresa} selectedEmpresa={selectedEmpresa} />
     </div>
   );
 }

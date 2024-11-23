@@ -1,14 +1,15 @@
 import './Details.css'
 
 interface DetailsProps {
-  company: string | null;
+  empresaDetails: string;
 }
 
-export default function Details({ company }: DetailsProps) {
+export default function Details({ empresaDetails }: DetailsProps) {
 
   return (
     <div className='containerDetails'>
-      <h3>Detalles de {company}</h3>
+      <h3>Detalles</h3>
+      <p>{empresaDetails}</p>
     </div>
   );
 }

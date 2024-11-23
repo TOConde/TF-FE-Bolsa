@@ -1,20 +1,22 @@
+import { Empresa } from '@/app/types/empresa';
 import ButtonsSide from './buttonsSide/ButtonsSide';
 import Cotizations from './cotizations/Cotizations';
 import Details from './details/Details';
 import './SideBar.css'
 
 interface SideBarProps {
-  onSelectCompany: (company: string) => void;
-  selectedCompany: string | null;
+  empresas: Empresa[];
+  onSelectEmpresa: (empresaId: string) => void;
+  selectedEmpresa: Empresa | null;
 }
 
-export default function SideBar({ onSelectCompany, selectedCompany }: SideBarProps) {
+export default function SideBar({ empresas, onSelectEmpresa, selectedEmpresa }: SideBarProps) {
 
   return (
     <div className='containerSideBar'>
       <ButtonsSide />
-      <Cotizations onSelectCompany={onSelectCompany} />
-      <Details company={selectedCompany} />
+      <Cotizations empresas={empresas} onSelectEmpresa={onSelectEmpresa} />
+      {selectedEmpresa && <Details empresaDetails={selectedEmpresa.empresaDetails} />}
     </div>
   );
 }
