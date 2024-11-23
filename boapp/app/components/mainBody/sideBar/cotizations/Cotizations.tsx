@@ -1,17 +1,17 @@
+import { Empresa } from '@/app/types/empresa';
 import './Cotizations.css'
 
 interface CotizationsProps {
-  onSelectCompany: (company: string) => void;
+  empresas: Empresa[];
+  onSelectEmpresa: (empresaId: string) => void;
 }
 
-export default function Cotizations({ onSelectCompany }: CotizationsProps) {
-  const companies = ['Empresa 1', 'Empresa 2', 'Empresa 3', 'Empresa 4', 'Empresa 5',  'Empresa 6', 'Empresa 7'];// get de las empresas
-
+export default function Cotizations({ empresas, onSelectEmpresa }: CotizationsProps) {
   return (
     <div className='containerCotizations'>
-      {companies.map((company) => (
-        <div key={company} onClick={() => onSelectCompany(company)}>
-          {company}
+      {empresas.map((empresa) => (
+        <div key={empresa.id} onClick={() => onSelectEmpresa(empresa.id)}>
+          {empresa.codEmpresa}
         </div>
       ))}
     </div>
