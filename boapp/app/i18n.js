@@ -26,6 +26,20 @@ i18next
             terminoServicio: "Términos de Servicio",
             derechosReservados: "Todos los derechos reservados."
           },
+          sideBar: {
+            buttons: {
+              empresas: "Empresas",
+              indices: "Índices",
+            },
+            detalles: "Detalles",
+            AMZN: "Amazon.com, Inc. es una corporación estadounidense de comercio electrónico y servicios de computación en la nube a todos los niveles con sede en la ciudad de Seattle, Washington.",
+            XOM: "ExxonMobil Corporation es una empresa petrolera y gasista estadounidense, la mayor del país en su sector. Fue fundada como Standard Oil Company en 1870 por John D. Rockefeller.",
+            UNH: "UnitedHealthcare es una empresa estadounidense de seguros de salud. Tiene su sede en Minnetonka, Minnesota, en la área metropolitana de Mineápolis–Saint Paul.",
+            PEP: "PepsiCo, Inc. es una empresa multinacional estadounidense dedicada a la fabricación, comercialización y distribución de bebidas y aperitivos. Tiene su sede en Purchase, Nueva York, Estados Unidos.",
+            TTE: "TotalEnergies SE es un grupo empresarial del sector petroquímico y energético con sede mundial en La Défense (Francia). Su actividad se encuentra presente en más de 130 países, empleando a unas 105 000 personas.",
+            MSFT: "Microsoft Corporation es una corporación tecnológica multinacional estadounidense con sede en Redmond, Washington. Los productos de software más conocidos de Microsoft son la línea de sistemas operativos Microsoft Windows.",
+            KO: "The Coca-Cola Company es una corporación multinacional estadounidense de bebidas con sede en Atlanta, Georgia. Tiene intereses en la fabricación, venta minorista y comercialización de concentrados y jarabes para bebidas no alcohólicas.",
+          },
         },
       },
       en: {
@@ -46,6 +60,20 @@ i18next
             terminoServicio: "Terms of Service",
             derechosReservados: "All rights reserved."
           },
+          sideBar: {
+            buttons: {
+              empresas: "Companies",
+              indices: "Index",
+            },
+            detalles: "Details",
+            AMZN: "Amazon.com, Inc. is an American e-commerce and cloud computing corporation headquartered in Seattle, Washington.",
+            XOM: "ExxonMobil Corporation is an American oil and gas company, the largest in its sector in the country. It was founded as Standard Oil Company in 1870 by John D. Rockefeller.",
+            UNH: "UnitedHealthcare is an American health insurance company. It is headquartered in Minnetonka, Minnesota, in the Minneapolis–Saint Paul metropolitan area.",
+            PEP: "PepsiCo, Inc. is an American multinational company dedicated to the manufacturing, marketing, and distribution of beverages and snacks. It is headquartered in Purchase, New York, United States.",
+            TTE: "TotalEnergies SE is a petrochemical and energy sector business group headquartered in La Défense, France. Its operations are present in over 130 countries, employing approximately 105,000 people.",
+            MSFT: "Microsoft Corporation is an American multinational technology corporation headquartered in Redmond, Washington. Microsoft's most well-known software products are the Microsoft Windows operating systems.",
+            KO: "The Coca-Cola Company is an American multinational beverage corporation headquartered in Atlanta, Georgia. It has interests in the manufacturing, retailing, and marketing of non-alcoholic beverage concentrates and syrups."
+          },
         }
       },
       tur: {
@@ -65,6 +93,20 @@ i18next
             politicaPrivacidad: "Gizlilik Politikası",
             terminoServicio: "Hizmet Şartları",
             derechosReservados: "Tüm hakları saklıdır."
+          },
+          sideBar: {
+            buttons: {
+              empresas: "Şirket",
+              indices: "Dizin",
+            },
+            detalles: "Detaylar",
+            AMZN: "Amazon.com, Inc., Seattle, Washington merkezli, Amerikan e-ticaret ve bulut bilişim şirketidir.",
+            XOM: "ExxonMobil Corporation, Amerikan petrol ve gaz şirketidir ve ülkedeki sektörünün en büyüğüdür. 1870 yılında John D. Rockefeller tarafından Standard Oil Company olarak kurulmuştur.",
+            UNH: "UnitedHealthcare, bir Amerikan sağlık sigortası şirketidir. Şirketin merkezi, Minneapolis–Saint Paul metropolitan bölgesindeki Minnetonka, Minnesota'dadır.",
+            PEP: "PepsiCo, Inc., içecek ve atıştırmalık üretimi, pazarlaması ve dağıtımı ile uğraşan, Amerika merkezli çok uluslu bir şirkettir. Şirketin merkezi, Purchase, New York, Amerika Birleşik Devletleri'ndedir.",
+            TTE: "TotalEnergies SE, Fransa'nın La Défense bölgesinde merkezi bulunan bir petrokimya ve enerji sektör grubu şirketidir. Faaliyetleri 130'dan fazla ülkede bulunmaktadır ve yaklaşık 105.000 kişi istihdam etmektedir.",
+            MSFT: "Microsoft Corporation, Redmond, Washington merkezli bir Amerikan çok uluslu teknoloji şirketidir. Microsoft'un en bilinen yazılım ürünleri, Microsoft Windows işletim sistemleri serisidir.",
+            KO: "The Coca-Cola Company, Atlanta, Georgia merkezli bir Amerikan çok uluslu içecek şirketidir. Şirket, alkolsüz içecek konsantreleri ve şuruplarının üretimi, perakendesi ve pazarlamasıyla ilgilenmektedir."
           },
         }
       }

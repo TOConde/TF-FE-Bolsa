@@ -16,7 +16,7 @@ export default function SideBar({ empresas, onSelectEmpresa, selectedEmpresa }: 
     <div className='containerSideBar'>
       <ButtonsSide />
       <Cotizations empresas={empresas} onSelectEmpresa={onSelectEmpresa} />
-      {selectedEmpresa && <Details empresaDetails={selectedEmpresa.empresaDetails} />}
+      {selectedEmpresa && <Details codEmpresa={selectedEmpresa.codEmpresa} />}
     </div>
   );
 }
