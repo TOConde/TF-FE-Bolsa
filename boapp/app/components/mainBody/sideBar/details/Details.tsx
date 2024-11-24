@@ -1,15 +1,17 @@
+import { useTranslation } from 'next-i18next';
 import './Details.css'
 
 interface DetailsProps {
-  empresaDetails: string;
+  codEmpresa: string;
 }
 
-export default function Details({ empresaDetails }: DetailsProps) {
-
+export default function Details({ codEmpresa }: DetailsProps) {
+  const { t } = useTranslation();
+  
   return (
     <div className='containerDetails'>
-      <h3>Detalles</h3>
-      <p>{empresaDetails}</p>
+      <h3>{t('sideBar.detalles')}</h3>
+      <p>{t(`sideBar.${codEmpresa}`)}</p>
     </div>
   );
 }
