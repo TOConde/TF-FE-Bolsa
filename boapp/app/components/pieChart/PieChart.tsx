@@ -1,21 +1,53 @@
 import Chart from 'react-google-charts';
 import './PieChart.css'
+import { useEffect, useState } from 'react';
+import { getAllEmpresas, getUltimaCotizacion } from '@/app/services/Empresa';
 
 export const PieChart = () => {
-  const data = [
-    ["Task", "Hours per Day"],
-    ["Work", 11],
-    ["Eat", 2],
-    ["Commute", 2],
-    ["Watch TV", 2],
-    ["Sleep", 7],
-  ];
+  const [data, setData] = useState<(string | number)[][]>([]);
+
+  const fetchEmpresasData = async () => {
+    try {
+      const empresas = await getAllEmpresas();
+
+      const valoresTotales = await Promise.all(
+        empresas.map(async (empresa) => {
+          const ultimaCotizacion = await getUltimaCotizacion(empresa.codEmpresa);
+          const valorTotal = ultimaCotizacion * empresa.cantidadAcciones;
+          return { nombre: empresa.codEmpresa, valorTotal };
+        })
+      );
+
+      const totalMercado = valoresTotales.reduce(
+        (acumulador, empresa) => acumulador + empresa.valorTotal,
+        0
+      );
+
+      const datosParaGraficoTorta = [
+        ["Empresa", "Valor Total"],
+        ...valoresTotales.map((empresa) => [
+          empresa.nombre,
+          empresa.valorTotal,
+        ]),
+      ];
+
+      console.log("Datos para el gráfico de torta:", datosParaGraficoTorta);
+
+      setData(datosParaGraficoTorta);
+    } catch (error) {
+      console.error("Error al obtener datos para el gráfico torta:", error);
+    }
+  }
+
+  useEffect(() => {
+    fetchEmpresasData();
+  }, []);
 
   const options = {
     title: "Participación en bolsa",
-    is3D: true,
+    is3D: false,
     pieStartAngle: 100, // Rotates the chart
-    sliceVisibilityThreshold: 0.02, // Hides slices smaller than 2%
+    sliceVisibilityThreshold: 0, // Hides slices
     legend: {
       position: "bottom",
       alignment: "center",
@@ -24,7 +56,7 @@ export const PieChart = () => {
         fontSize: 14,
       },
     },
-    colors: ["#8AD1C2", "#9F8AD1", "#D18A99", "#BCD18A", "#D1C28A"],
+    colors: ["#8AD1C2", "#9F8AD1", "#D18A99", "#BCD18A", "#D1C28A", "#FFB6C1", "#FFD700"],
     backgroundColor: "transparent",
   };
 

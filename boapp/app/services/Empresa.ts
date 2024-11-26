@@ -33,3 +33,13 @@ export const getCotizacionesEmpresa = async (codEmpresa: string, fechaDesde: str
     throw error;
   }
 }
+
+export const getUltimaCotizacion = async (codEmpresa: string): Promise<any> => {
+  try {
+    const response = await apiClient.get(`empresas/${codEmpresa}/ultima/cotizacion`)
+    return response.data;
+  } catch (error) {
+    console.log('Error fetching ultima cotization empresa:', error);
+    throw error;
+  }
+}
