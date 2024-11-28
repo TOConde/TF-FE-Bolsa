@@ -5,11 +5,21 @@ import SideBar from './sideBar/SideBar';
 import { getAllEmpresas, getCotizacionesEmpresa } from '@/app/services/Empresa';
 import { Empresa } from '@/app/types/empresa';
 import { Cotizacion } from '@/app/types/cotizaciones';
+import { Bolsa } from '@/app/types/bolsa';
+import { getAllBolsas, getCotizacionesBolsa } from '@/app/services/Bolsa';
+import { CotizacionBolsa } from '@/app/types/cotizacionBolsa';
 
 export const MainBody = () => {
+  const [isBolsaActive, setIsBolsaActive] = useState(false);
+  const [selectedBolsa, setSelectedBolsa] = useState<Bolsa | null>(null);
+  const [bolsas, setBolsa] = useState<Bolsa[]>([]);
   const [selectedEmpresa, setSelectedEmpresa] = useState<Empresa | null>(null);
   const [empresas, setEmpresas] = useState<Empresa[]>([]);
   const [chartData, setChartData] = useState<Array<any>>([]);
+
+  const handleToggleView = (view: "empresa" | "bolsa") => {
+    setIsBolsaActive(view === "bolsa");
+  };
 
   useEffect(() => {
     const fetchEmpresas = async () => {
@@ -28,7 +38,23 @@ export const MainBody = () => {
   }, []);
 
   useEffect(() => {
-    const fetchCotizaciones = async () =>{
+    const fetchBolsas = async () => {
+      try {
+        const data = await getAllBolsas();
+        setBolsa(data);
+        if (data.length > 0) {
+          setSelectedBolsa(data[0])
+        }
+      } catch (error) {
+        console.error('Error fetching bolsas:', error);
+      }
+    }
+
+    fetchBolsas();
+  }, []);
+
+  useEffect(() => {
+    const fetchCotizaciones = async () => {
       if (selectedEmpresa) {
         try {
           const fechaDesde = '2024-10-01';
@@ -40,9 +66,9 @@ export const MainBody = () => {
             ["Label", "Min-Max, Open-Close", "", "", ""],
             ...cotizaciones.map((c: Cotizacion) => [
               c.fecha,
-              parseFloat(c.minimo.toString()), 
-              parseFloat(c.apertura.toString()), 
-              parseFloat(c.cierre.toString()), 
+              parseFloat(c.minimo.toString()),
+              parseFloat(c.apertura.toString()),
+              parseFloat(c.cierre.toString()),
               parseFloat(c.maximo.toString()),
             ])
           ]
@@ -56,17 +82,60 @@ export const MainBody = () => {
     fetchCotizaciones();
   }, [selectedEmpresa])
 
+  useEffect(() => {
+    const fetchCotizacionesBolsa = async () => {
+      if (selectedBolsa) {
+        try {
+          const fechaDesde = '2024-10-01';
+          const fechaHasta = '2024-10-07';
+          const escala = 'mes';
+          const cotizacionesBolsa = await getCotizacionesBolsa(selectedBolsa.code, fechaDesde, fechaHasta, escala);
+
+          const formattedData = [
+            ["Label", "Min-Max, Open-Close", "", "", ""],
+            ...cotizacionesBolsa.map((c: CotizacionBolsa) => [
+              c.fecha,
+              parseFloat(c.minimo.toString()),
+              parseFloat(c.apertura.toString()),
+              parseFloat(c.cierre.toString()),
+              parseFloat(c.maximo.toString()),
+            ])
+          ]
+          setChartData(formattedData);
+        } catch (error) {
+          console.error('Error fetching cotizaciones bolsa:', error);
+        }
+      }
+    }
+
+    fetchCotizacionesBolsa();
+  }, [selectedBolsa])
+
   const handleSelectEmpresa = (id: string) => {
     const empresa = empresas.find((e) => e.id === id);
     setSelectedEmpresa(empresa || null);
   };
-  
+
+  const handleSelectBolsa = (id: string) => {
+    const bolsa = bolsas.find((e) => e.id === id);
+    setSelectedBolsa(bolsa || null);
+  };
+
   return (
     <div id='home' className='mainContainer'>
       <div className='containerGrafico'>
         <CanddleChart chartData={chartData} />
       </div>
-      <SideBar empresas={empresas} onSelectEmpresa={handleSelectEmpresa} selectedEmpresa={selectedEmpresa} />
+      <SideBar
+        empresas={empresas}
+        bolsas={bolsas}
+        onSelectEmpresa={handleSelectEmpresa}
+        onSelectBolsa={handleSelectBolsa}
+        selectedEmpresa={selectedEmpresa}
+        selectedBolsa={selectedBolsa}
+        isBolsaActive={isBolsaActive}
+        onToggleView={handleToggleView}
+      />
     </div>
   );
 }

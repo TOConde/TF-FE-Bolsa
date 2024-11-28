@@ -1,4 +1,5 @@
 import { Bolsa } from "../types/bolsa";
+import { CotizacionBolsa } from "../types/cotizacionBolsa";
 import apiClient from "./Axios";
 
 
@@ -22,9 +23,9 @@ export const getBolsa = async (code: string): Promise<Bolsa> => {
   }
 }
 
-export const getCotizacionesBolsa = async (code: string, fechaDesde: string, fechaHasta: string, escala: string): Promise<Bolsa[]> => {
+export const getCotizacionesBolsa = async (code: string, fechaDesde: string, fechaHasta: string, escala: string): Promise<CotizacionBolsa[]> => {
   try {
-    const response = await apiClient.get(`empresas/${code}/cotizaciones`, {
+    const response = await apiClient.get(`bolsas/${code}/cotizaciones`, {
       params: { fechaDesde, fechaHasta, escala }
     });
     return response.data;
