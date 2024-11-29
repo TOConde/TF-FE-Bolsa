@@ -13,21 +13,21 @@ interface SideBarProps {
   onSelectEmpresa: (empresaId: string) => void;
   onSelectBolsa: (bolsaId: string) => void;
   selectedEmpresa: Empresa | null;
-  selectedBolsa: Bolsa | null;
+  selectedBolsas: Bolsa[];
   isBolsaActive: boolean;
   onToggleView: (view: "empresa" | "bolsa") => void;
 }
 
-export default function SideBar({ empresas, bolsas, onSelectEmpresa, onSelectBolsa, selectedEmpresa, selectedBolsa, isBolsaActive, onToggleView }: SideBarProps) {
+export default function SideBar({ empresas, bolsas, onSelectEmpresa, onSelectBolsa, selectedEmpresa, selectedBolsas, isBolsaActive, onToggleView }: SideBarProps) {
   return (
     <div className='containerSideBar'>
       <ButtonsSide onToggleView={onToggleView} />
       {isBolsaActive ? (
-        <CotizationsBolsa bolsas={bolsas} onSelectBolsa={onSelectBolsa} />
+        <CotizationsBolsa bolsas={bolsas} onSelectBolsa={onSelectBolsa} selectedBolsas={selectedBolsas}/>
       ) : (
         <Cotizations empresas={empresas} onSelectEmpresa={onSelectEmpresa} />
       )}
-      {isBolsaActive && selectedBolsa && <DetailsBolsa name={selectedBolsa.name} />}
+      {isBolsaActive && selectedBolsas && <DetailsBolsa name={selectedBolsas.map((bolsa) => bolsa.name)} />}
       {!isBolsaActive && selectedEmpresa && <Details codEmpresa={selectedEmpresa.codEmpresa} />}
     </div>
   );
