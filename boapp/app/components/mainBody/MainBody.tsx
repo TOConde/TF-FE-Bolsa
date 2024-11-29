@@ -7,11 +7,10 @@ import { Empresa } from '@/app/types/empresa';
 import { Cotizacion } from '@/app/types/cotizaciones';
 import { Bolsa } from '@/app/types/bolsa';
 import { getAllBolsas, getCotizacionesBolsa } from '@/app/services/Bolsa';
-import { CotizacionBolsa } from '@/app/types/cotizacionBolsa';
 
 export const MainBody = () => {
   const [isBolsaActive, setIsBolsaActive] = useState(false);
-  const [selectedBolsa, setSelectedBolsa] = useState<Bolsa | null>(null);
+  const [selectedBolsas, setSelectedBolsas] = useState<Bolsa[]>([]);
   const [bolsas, setBolsa] = useState<Bolsa[]>([]);
   const [selectedEmpresa, setSelectedEmpresa] = useState<Empresa | null>(null);
   const [empresas, setEmpresas] = useState<Empresa[]>([]);
@@ -43,7 +42,7 @@ export const MainBody = () => {
         const data = await getAllBolsas();
         setBolsa(data);
         if (data.length > 0) {
-          setSelectedBolsa(data[0])
+          setSelectedBolsas(data)
         }
       } catch (error) {
         console.error('Error fetching bolsas:', error);
@@ -54,13 +53,51 @@ export const MainBody = () => {
   }, []);
 
   useEffect(() => {
-    const fetchCotizaciones = async () => {
-      if (selectedEmpresa) {
+    const fetchChartData = async () => {
+      if (isBolsaActive) {
+        if (selectedBolsas.length === 0) {
+          setChartData([]);
+          return;
+        }
+        try {
+          const fechaDesde = '2024-06-01';
+          const fechaHasta = '2024-10-07';
+          const escala = 'mes';
+
+          const allCotizaciones = await Promise.all(
+            selectedBolsas.map((bolsa) =>
+              getCotizacionesBolsa(bolsa.code, fechaDesde, fechaHasta, escala)
+            )
+          );
+
+          const formattedData = [
+            ["Label", "Min-Max, Open-Close", "", "", ""],
+            ...allCotizaciones.flatMap((cotizaciones, index) =>
+              cotizaciones.map((c) => [
+                `${c.fecha} (${selectedBolsas[index].code})`,
+                parseFloat(c.minimo.toString()),
+                parseFloat(c.apertura.toString()),
+                parseFloat(c.cierre.toString()),
+                parseFloat(c.maximo.toString()),
+              ])
+            )
+          ];
+          setChartData(formattedData);
+        } catch (error) {
+          console.error('Error fetching bolsas data:', error);
+        }
+      } else if (selectedEmpresa) {
         try {
           const fechaDesde = '2024-10-01';
           const fechaHasta = '2024-10-07';
           const escala = 'mes';
-          const cotizaciones = await getCotizacionesEmpresa(selectedEmpresa.codEmpresa, fechaDesde, fechaHasta, escala);
+
+          const cotizaciones = await getCotizacionesEmpresa(
+            selectedEmpresa.codEmpresa,
+            fechaDesde,
+            fechaHasta,
+            escala
+          );
 
           const formattedData = [
             ["Label", "Min-Max, Open-Close", "", "", ""],
@@ -71,45 +108,16 @@ export const MainBody = () => {
               parseFloat(c.cierre.toString()),
               parseFloat(c.maximo.toString()),
             ])
-          ]
+          ];
           setChartData(formattedData);
         } catch (error) {
-          console.error('Error fetching cotizaciones:', error);
+          console.error('Error fetching empresa data:', error);
         }
       }
-    }
+    };
 
-    fetchCotizaciones();
-  }, [selectedEmpresa])
-
-  useEffect(() => {
-    const fetchCotizacionesBolsa = async () => {
-      if (selectedBolsa) {
-        try {
-          const fechaDesde = '2024-10-01';
-          const fechaHasta = '2024-10-07';
-          const escala = 'mes';
-          const cotizacionesBolsa = await getCotizacionesBolsa(selectedBolsa.code, fechaDesde, fechaHasta, escala);
-
-          const formattedData = [
-            ["Label", "Min-Max, Open-Close", "", "", ""],
-            ...cotizacionesBolsa.map((c: CotizacionBolsa) => [
-              c.fecha,
-              parseFloat(c.minimo.toString()),
-              parseFloat(c.apertura.toString()),
-              parseFloat(c.cierre.toString()),
-              parseFloat(c.maximo.toString()),
-            ])
-          ]
-          setChartData(formattedData);
-        } catch (error) {
-          console.error('Error fetching cotizaciones bolsa:', error);
-        }
-      }
-    }
-
-    fetchCotizacionesBolsa();
-  }, [selectedBolsa])
+    fetchChartData();
+  }, [isBolsaActive, selectedEmpresa, selectedBolsas]);
 
   const handleSelectEmpresa = (id: string) => {
     const empresa = empresas.find((e) => e.id === id);
@@ -117,8 +125,16 @@ export const MainBody = () => {
   };
 
   const handleSelectBolsa = (id: string) => {
-    const bolsa = bolsas.find((e) => e.id === id);
-    setSelectedBolsa(bolsa || null);
+    const bolsa = bolsas.find((b) => b.id === id);
+    if (!bolsa) return;
+
+    setSelectedBolsas((prev) => {
+      const alreadySelected = prev.find((b) => b.id === id);
+      if (alreadySelected) {
+        return prev.filter((b) => b.id !== id);
+      }
+      return [...prev, bolsa];
+    });
   };
 
   return (
@@ -132,7 +148,7 @@ export const MainBody = () => {
         onSelectEmpresa={handleSelectEmpresa}
         onSelectBolsa={handleSelectBolsa}
         selectedEmpresa={selectedEmpresa}
-        selectedBolsa={selectedBolsa}
+        selectedBolsas={selectedBolsas}
         isBolsaActive={isBolsaActive}
         onToggleView={handleToggleView}
       />
