@@ -40,6 +40,7 @@ i18next
             MSFT: "Microsoft Corporation es una corporación tecnológica multinacional estadounidense con sede en Redmond, Washington. Los productos de software más conocidos de Microsoft son la línea de sistemas operativos Microsoft Windows.",
             KO: "The Coca-Cola Company es una corporación multinacional estadounidense de bebidas con sede en Atlanta, Georgia. Tiene intereses en la fabricación, venta minorista y comercialización de concentrados y jarabes para bebidas no alcohólicas.",
           },
+          indiceSeleccionado: "Indices Seleccionados",
           graficoVela: {
             label: "Mínimo-Máximo, Apertura-Clausura",
           },
@@ -77,6 +78,7 @@ i18next
             MSFT: "Microsoft Corporation is an American multinational technology corporation headquartered in Redmond, Washington. Microsoft's most well-known software products are the Microsoft Windows operating systems.",
             KO: "The Coca-Cola Company is an American multinational beverage corporation headquartered in Atlanta, Georgia. It has interests in the manufacturing, retailing, and marketing of non-alcoholic beverage concentrates and syrups."
           },
+          indiceSeleccionado: "Selected Indices",
           graficoVela: {
             label: "Minimum-Maximum, Opening-Closing",
           },          
@@ -114,6 +116,7 @@ i18next
             MSFT: "Microsoft Corporation, Redmond, Washington merkezli bir Amerikan çok uluslu teknoloji şirketidir. Microsoft'un en bilinen yazılım ürünleri, Microsoft Windows işletim sistemleri serisidir.",
             KO: "The Coca-Cola Company, Atlanta, Georgia merkezli bir Amerikan çok uluslu içecek şirketidir. Şirket, alkolsüz içecek konsantreleri ve şuruplarının üretimi, perakendesi ve pazarlamasıyla ilgilenmektedir."
           },
+          indiceSeleccionado: "Seçili Endeksler",
           graficoVela: {
             label: "Minimum-Maksimum, Açılış-Kapanış",
           },
