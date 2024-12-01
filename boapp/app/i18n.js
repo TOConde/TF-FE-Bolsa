@@ -18,6 +18,9 @@ i18next
           buttons: {
             sobreNosotros: "Sobre nosotros",
             contacto: "Contacto",
+            desde: "Desde",
+            hasta: "Hasta",
+            escala: "Escala",
           },
           footer: {
             sobreNosotros: "Sobre nosotros",
@@ -56,6 +59,9 @@ i18next
           buttons: {
             sobreNosotros: "About Us",
             contacto: "Contact",
+            desde: "From",
+            hasta: "To",
+            escala: "Scale",
           },
           footer: {
             sobreNosotros: "About Us",
@@ -68,6 +74,9 @@ i18next
             buttons: {
               empresas: "Companies",
               indices: "Index",
+              desde: "Başlangıç",
+              hasta: "Bitiş",
+              escala: "Ölçek",
             },
             detalles: "Details",
             AMZN: "Amazon.com, Inc. is an American e-commerce and cloud computing corporation headquartered in Seattle, Washington.",
@@ -81,7 +90,7 @@ i18next
           indiceSeleccionado: "Selected Indices",
           graficoVela: {
             label: "Minimum-Maximum, Opening-Closing",
-          },          
+          },
         }
       },
       tur: {
