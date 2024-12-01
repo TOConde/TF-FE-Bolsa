@@ -18,6 +18,12 @@ i18next
           buttons: {
             sobreNosotros: "Sobre nosotros",
             contacto: "Contacto",
+            desde: "Desde",
+            hasta: "Hasta",
+            escala: "Escala",
+            hora: "Hora",
+            dia: "Día",
+            mes: "Mes",
           },
           footer: {
             sobreNosotros: "Sobre nosotros",
@@ -44,6 +50,9 @@ i18next
           graficoVela: {
             label: "Mínimo-Máximo, Apertura-Clausura",
           },
+          piechart: {
+            titulo: "Participación en bolsa",
+          },
         },
       },
       en: {
@@ -56,6 +65,12 @@ i18next
           buttons: {
             sobreNosotros: "About Us",
             contacto: "Contact",
+            desde: "From",
+            hasta: "To",
+            escala: "Scale",
+            hora: "Hour",
+            dia: "Day",
+            mes: "Month",
           },
           footer: {
             sobreNosotros: "About Us",
@@ -81,7 +96,10 @@ i18next
           indiceSeleccionado: "Selected Indices",
           graficoVela: {
             label: "Minimum-Maximum, Opening-Closing",
-          },          
+          },
+          piechart: {
+            titulo: "Stock market participation",
+          },
         }
       },
       tur: {
@@ -93,7 +111,13 @@ i18next
           sobreNosotrosP4: "Ayrıca, Borsa İstanbul, çevreye duyarlı şirketleri ve projeleri destekleyen yatırım ürünleri sunarak sürdürülebilirliği teşvik etmeye kendini adamıştır. Bu taahhüt, borsanın küresel finans arenasındaki rolünü güçlendirerek sürdürülebilir ekonomik kalkınmada önemli bir aktör olmasını sağlamaktadır.",
           buttons: {
             sobreNosotros: "Hakkımızda",
-            contacto: "İletişim",
+            contacto: "İletişim",            
+            desde: "Başlangıç",
+            hasta: "Bitiş",
+            escala: "Ölçek",
+            hora: "Saat",
+            dia: "Gün",
+            mes: "Ay",
           },
           footer: {
             sobreNosotros: "Hakkımızda",
@@ -119,6 +143,9 @@ i18next
           indiceSeleccionado: "Seçili Endeksler",
           graficoVela: {
             label: "Minimum-Maksimum, Açılış-Kapanış",
+          },
+          piechart: {
+            titulo: "Borsada katılım",
           },
         }
       }

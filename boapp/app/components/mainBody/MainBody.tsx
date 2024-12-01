@@ -7,18 +7,35 @@ import { Empresa } from '@/app/types/empresa';
 import { Cotizacion } from '@/app/types/cotizaciones';
 import { Bolsa } from '@/app/types/bolsa';
 import { getAllBolsas, getCotizacionesBolsa } from '@/app/services/Bolsa';
+import { useTranslation } from 'next-i18next';
 
 export const MainBody = () => {
+  const { t } = useTranslation();
   const [isBolsaActive, setIsBolsaActive] = useState(false);
   const [selectedBolsas, setSelectedBolsas] = useState<Bolsa[]>([]);
   const [bolsas, setBolsa] = useState<Bolsa[]>([]);
   const [selectedEmpresa, setSelectedEmpresa] = useState<Empresa | null>(null);
   const [empresas, setEmpresas] = useState<Empresa[]>([]);
   const [chartData, setChartData] = useState<Array<any>>([]);
+  const [fechaDesde, setFechaDesde] = useState("");
+  const [fechaHasta, setFechaHasta] = useState("");
+  const [escala, setEscala] = useState("mes");
+  const liraTurca = 34.66;
 
   const handleToggleView = (view: "empresa" | "bolsa") => {
     setIsBolsaActive(view === "bolsa");
   };
+
+  useEffect(() => {
+    const today = new Date();
+    const threeMonthsAgo = new Date();
+    threeMonthsAgo.setMonth(today.getMonth() - 3);
+
+    const formatDate = (date: Date) => date.toISOString().split('T')[0];
+
+    setFechaDesde(formatDate(threeMonthsAgo));
+    setFechaHasta(formatDate(today));
+  }, []);
 
   useEffect(() => {
     const fetchEmpresas = async () => {
@@ -60,10 +77,6 @@ export const MainBody = () => {
           return;
         }
         try {
-          const fechaDesde = '2024-06-01';
-          const fechaHasta = '2024-10-07';
-          const escala = 'mes';
-
           const allCotizaciones = await Promise.all(
             selectedBolsas.map((bolsa) =>
               getCotizacionesBolsa(bolsa.code, fechaDesde, fechaHasta, escala)
@@ -75,10 +88,10 @@ export const MainBody = () => {
             ...allCotizaciones.flatMap((cotizaciones, index) =>
               cotizaciones.map((c) => [
                 `${c.fecha} (${selectedBolsas[index].code})`,
-                parseFloat(c.minimo.toString()),
-                parseFloat(c.apertura.toString()),
-                parseFloat(c.cierre.toString()),
-                parseFloat(c.maximo.toString()),
+                parseFloat(c.minimo.toString()) * liraTurca,
+                parseFloat(c.apertura.toString()) * liraTurca,
+                parseFloat(c.cierre.toString()) * liraTurca,
+                parseFloat(c.maximo.toString()) * liraTurca,
               ])
             )
           ];
@@ -88,10 +101,6 @@ export const MainBody = () => {
         }
       } else if (selectedEmpresa) {
         try {
-          const fechaDesde = '2024-10-01';
-          const fechaHasta = '2024-10-07';
-          const escala = 'mes';
-
           const cotizaciones = await getCotizacionesEmpresa(
             selectedEmpresa.codEmpresa,
             fechaDesde,
@@ -103,10 +112,10 @@ export const MainBody = () => {
             ["Label", "Min-Max, Open-Close", "", "", ""],
             ...cotizaciones.map((c: Cotizacion) => [
               c.fecha,
-              parseFloat(c.minimo.toString()),
-              parseFloat(c.apertura.toString()),
-              parseFloat(c.cierre.toString()),
-              parseFloat(c.maximo.toString()),
+              parseFloat(c.minimo.toString()) * liraTurca,
+              parseFloat(c.apertura.toString()) * liraTurca,
+              parseFloat(c.cierre.toString()) * liraTurca,
+              parseFloat(c.maximo.toString()) * liraTurca,
             ])
           ];
           setChartData(formattedData);
@@ -117,7 +126,7 @@ export const MainBody = () => {
     };
 
     fetchChartData();
-  }, [isBolsaActive, selectedEmpresa, selectedBolsas]);
+  }, [isBolsaActive, selectedEmpresa, selectedBolsas, fechaDesde, fechaHasta, escala]);
 
   const handleSelectEmpresa = (id: string) => {
     const empresa = empresas.find((e) => e.id === id);
@@ -139,7 +148,32 @@ export const MainBody = () => {
 
   return (
     <div id='home' className='mainContainer'>
-      <div className='containerGrafico'>
+      <div className="controls-container">
+      <div className="controls">
+        <label>{t('buttons.desde')}:
+          <input
+            type="date"
+            value={fechaDesde}
+            onChange={(e) => setFechaDesde(e.target.value)}
+          />
+        </label>
+        <label>{t('buttons.hasta')}:
+          <input
+            type="date"
+            value={fechaHasta}
+            onChange={(e) => setFechaHasta(e.target.value)}
+          />
+        </label>
+        <label>{t('buttons.escala')}:
+          <select value={escala} onChange={(e) => setEscala(e.target.value)}>
+            <option value="hora" disabled={isBolsaActive}>{t('buttons.hora')}</option>
+            <option value="dia">{t('buttons.dia')}</option>
+            <option value="mes">{t('buttons.mes')}</option>
+          </select>
+        </label>
+      </div>
+    </div>     
+      <div className='containerGrafico'>        
         <CanddleChart chartData={chartData} />
       </div>
       <SideBar

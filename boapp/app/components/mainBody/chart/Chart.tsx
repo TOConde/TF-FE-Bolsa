@@ -11,9 +11,8 @@ export const options = {
 };
 
 export const CanddleChart = ({ chartData }: { chartData: Array<any> }) => {
-
   return (
-    <div className='chartContainer'>
+    <div className='chartContainer'>      
       <Chart
         chartType="CandlestickChart"
         width="100%"
