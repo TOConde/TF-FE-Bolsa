@@ -8,6 +8,7 @@ import SideLegend from './sideLegend/SideLegend';
 export const PieChart = () => {
   const { t } = useTranslation();
   const [data, setData] = useState<(string | number)[][]>([]);
+  const liraTurca = 34.66; //1 dolar 36.66 libras turcas 
 
   const fetchEmpresasData = async () => {
     try {
@@ -16,7 +17,7 @@ export const PieChart = () => {
       const valoresTotales = await Promise.all(
         empresas.map(async (empresa) => {
           const ultimaCotizacion = await getUltimaCotizacion(empresa.codEmpresa);
-          const valorTotal = ultimaCotizacion * empresa.cantidadAcciones;
+          const valorTotal = ultimaCotizacion * empresa.cantidadAcciones * liraTurca;
           return { nombre: empresa.codEmpresa, valorTotal };
         })
       );
