@@ -11,10 +11,10 @@ export default function ButtonsSide({ onToggleView }: ButtonsSideProps) {
 
   return (
     <div className='containerButtonsSide'>
-      <Button variant="primary" size="sm" onClick={() => onToggleView("empresa")}>
+      <Button className='buttonSideBar' variant="primary" size="sm" onClick={() => onToggleView("empresa")}>
         {t('sideBar.buttons.empresas')}
       </Button>
-      <Button variant="primary" size="sm" onClick={() => onToggleView("bolsa")}>
+      <Button className='buttonSideBar' variant="primary" size="sm" onClick={() => onToggleView("bolsa")}>
         {t('sideBar.buttons.indices')}
       </Button>
     </div>
