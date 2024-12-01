@@ -50,6 +50,9 @@ i18next
           graficoVela: {
             label: "Mínimo-Máximo, Apertura-Clausura",
           },
+          piechart: {
+            titulo: "Participación en bolsa",
+          },
         },
       },
       en: {
@@ -94,6 +97,9 @@ i18next
           graficoVela: {
             label: "Minimum-Maximum, Opening-Closing",
           },
+          piechart: {
+            titulo: "Stock market participation",
+          },
         }
       },
       tur: {
@@ -137,6 +143,9 @@ i18next
           indiceSeleccionado: "Seçili Endeksler",
           graficoVela: {
             label: "Minimum-Maksimum, Açılış-Kapanış",
+          },
+          piechart: {
+            titulo: "Borsada katılım",
           },
         }
       }

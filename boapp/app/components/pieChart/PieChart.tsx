@@ -2,8 +2,10 @@ import Chart from 'react-google-charts';
 import './PieChart.css'
 import { useEffect, useState } from 'react';
 import { getAllEmpresas, getUltimaCotizacion } from '@/app/services/Empresa';
+import { useTranslation } from 'next-i18next';
 
 export const PieChart = () => {
+  const { t } = useTranslation();
   const [data, setData] = useState<(string | number)[][]>([]);
 
   const fetchEmpresasData = async () => {
@@ -42,7 +44,7 @@ export const PieChart = () => {
   }, []);
 
   const options = {
-    title: "Participación en bolsa",
+    title: t('piechart.titulo'),
     is3D: false,
     pieStartAngle: 100, // Rotates the chart
     sliceVisibilityThreshold: 0, // Hides slices
