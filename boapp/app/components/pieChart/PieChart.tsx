@@ -30,9 +30,7 @@ export const PieChart = () => {
           empresa.valorTotal,
         ]),
       ];
-
-      console.log("Datos para el gráfico de torta:", datosParaGraficoTorta);
-
+      
       setData(datosParaGraficoTorta);
     } catch (error) {
       console.error("Error al obtener datos para el gráfico torta:", error);
