@@ -10,7 +10,7 @@ export default function Cotizations({ empresas, onSelectEmpresa }: CotizationsPr
   return (
     <div className='containerCotizations'>
       {empresas.map((empresa) => (
-        <div key={empresa.id} onClick={() => onSelectEmpresa(empresa.id)}>
+        <div key={empresa.id} onClick={() => onSelectEmpresa(empresa.id)} className='divEmpresa'>
           {empresa.codEmpresa}
         </div>
       ))}

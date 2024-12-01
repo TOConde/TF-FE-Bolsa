@@ -10,12 +10,13 @@ interface CotizationsBolsasProps {
 
 export default function CotizationsBolsa({ bolsas, onSelectBolsa, selectedBolsas }: CotizationsBolsasProps) {
   return (
-    <div className='containerCotizations'>
+    <div className='containerCotizationsIndex'>
       <Form>
         <div className="row">
           {bolsas.map((bolsa) => (
             <div key={bolsa.id} className="col-md-6 mb-3 containerIndex">
               <Form.Check
+                className="formCheckIndex"
                 type="checkbox"
                 id={`bolsa-${bolsa.id}`}
                 label={bolsa.code}
