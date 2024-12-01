@@ -13,7 +13,7 @@ export default function CotizationsBolsa({ bolsas, onSelectBolsa, selectedBolsas
     <div className='containerCotizations'>
       <Form>
         {bolsas.map((bolsa) => (
-          <div key={bolsa.id} className="mb-3">
+          <div key={bolsa.id} className="mb-3 containerIndex">
             <Form.Check
               type="checkbox"
               id={`bolsa-${bolsa.id}`}
