@@ -20,7 +20,7 @@ export const MainBody = () => {
   const [fechaDesde, setFechaDesde] = useState("");
   const [fechaHasta, setFechaHasta] = useState("");
   const [escala, setEscala] = useState("mes");
-  const liraTurca = 34.66;
+  const liraTurca = 34.66; //1 dolar 34.66 libras turcas
 
   const handleToggleView = (view: "empresa" | "bolsa") => {
     setIsBolsaActive(view === "bolsa");

@@ -10,7 +10,7 @@ export default function SideLegend({ data }: { data: (string | number)[][] }) {
       <ul>
         {data.slice(1).map(([nombre, valorTotal]) => (
           <li key={nombre as string}>
-            {nombre}: ${valorTotal.toLocaleString()}
+            {nombre}: ₺{valorTotal.toLocaleString()}
           </li>
         ))}
       </ul>
