@@ -8,6 +8,7 @@ import { Cotizacion } from '@/app/types/cotizaciones';
 import { Bolsa } from '@/app/types/bolsa';
 import { getAllBolsas, getCotizacionesBolsa } from '@/app/services/Bolsa';
 import { useTranslation } from 'next-i18next';
+import { GoogleChartWrapperChartType } from 'react-google-charts';
 
 export const MainBody = () => {
   const { t } = useTranslation();
@@ -20,6 +21,7 @@ export const MainBody = () => {
   const [fechaDesde, setFechaDesde] = useState("");
   const [fechaHasta, setFechaHasta] = useState("");
   const [escala, setEscala] = useState("mes");
+  const [chartType, setChartType] = useState<GoogleChartWrapperChartType>("CandlestickChart");
   const liraTurca = 34.66; //1 dolar 34.66 libras turcas
 
   const handleToggleView = (view: "empresa" | "bolsa") => {
@@ -95,6 +97,8 @@ export const MainBody = () => {
               ])
             )
           ];
+          
+          setChartType(escala === 'hora' ? "LineChart" : "CandlestickChart");
           setChartData(formattedData);
         } catch (error) {
           console.error('Error fetching bolsas data:', error);
@@ -118,6 +122,8 @@ export const MainBody = () => {
               parseFloat(c.maximo.toString()) * liraTurca,
             ])
           ];
+
+          setChartType(escala === 'hora' ? "LineChart" : "CandlestickChart");
           setChartData(formattedData);
         } catch (error) {
           console.error('Error fetching empresa data:', error);
@@ -174,7 +180,7 @@ export const MainBody = () => {
       </div>
     </div>     
       <div className='containerGrafico'>        
-        <CanddleChart chartData={chartData} />
+        <CanddleChart chartData={chartData} chartType={chartType}/>
       </div>
       <SideBar
         empresas={empresas}

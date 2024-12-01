@@ -1,5 +1,5 @@
 import './Chart.css'
-import { Chart } from "react-google-charts";
+import { Chart, GoogleChartWrapperChartType } from "react-google-charts";
 
 export const options = {
   legend: "none",
@@ -8,13 +8,23 @@ export const options = {
     fallingColor: { strokeWidth: 0, fill: "#a52714" }, // red
     risingColor: { strokeWidth: 0, fill: "#0f9d58" }, // green
   },
+  line: {
+    curveType: 'function',
+    pointSize: 5,
+  },
+  hAxis: {
+    title: 'Fecha',
+  },
+  vAxis: {
+    title: 'Valor',
+  }
 };
 
-export const CanddleChart = ({ chartData }: { chartData: Array<any> }) => {
+export const CanddleChart = ({ chartData, chartType }: { chartData: Array<any>; chartType: GoogleChartWrapperChartType; }) => {
   return (
-    <div className='chartContainer'>      
+    <div className='chartContainer'>
       <Chart
-        chartType="CandlestickChart"
+        chartType={chartType}
         width="100%"
         height="100%"
         data={chartData}
