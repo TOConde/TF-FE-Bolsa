@@ -16,14 +16,26 @@ export const MainBody = () => {
   const [bolsas, setBolsa] = useState<Bolsa[]>([]);
   const [selectedEmpresa, setSelectedEmpresa] = useState<Empresa | null>(null);
   const [empresas, setEmpresas] = useState<Empresa[]>([]);
-  const [chartData, setChartData] = useState<Array<any>>([]);  const [fechaDesde, setFechaDesde] = useState("2024-06-01");
-  const [fechaHasta, setFechaHasta] = useState("2024-10-07");
+  const [chartData, setChartData] = useState<Array<any>>([]);
+  const [fechaDesde, setFechaDesde] = useState("");
+  const [fechaHasta, setFechaHasta] = useState("");
   const [escala, setEscala] = useState("mes");
   const liraTurca = 34.66;
 
   const handleToggleView = (view: "empresa" | "bolsa") => {
     setIsBolsaActive(view === "bolsa");
   };
+
+  useEffect(() => {
+    const today = new Date();
+    const threeMonthsAgo = new Date();
+    threeMonthsAgo.setMonth(today.getMonth() - 3);
+
+    const formatDate = (date: Date) => date.toISOString().split('T')[0];
+
+    setFechaDesde(formatDate(threeMonthsAgo));
+    setFechaHasta(formatDate(today));
+  }, []);
 
   useEffect(() => {
     const fetchEmpresas = async () => {
