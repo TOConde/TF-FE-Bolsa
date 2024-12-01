@@ -21,6 +21,9 @@ i18next
             desde: "Desde",
             hasta: "Hasta",
             escala: "Escala",
+            hora: "Hora",
+            dia: "Día",
+            mes: "Mes",
           },
           footer: {
             sobreNosotros: "Sobre nosotros",
@@ -62,6 +65,9 @@ i18next
             desde: "From",
             hasta: "To",
             escala: "Scale",
+            hora: "Hour",
+            dia: "Day",
+            mes: "Month",
           },
           footer: {
             sobreNosotros: "About Us",
@@ -74,9 +80,6 @@ i18next
             buttons: {
               empresas: "Companies",
               indices: "Index",
-              desde: "Başlangıç",
-              hasta: "Bitiş",
-              escala: "Ölçek",
             },
             detalles: "Details",
             AMZN: "Amazon.com, Inc. is an American e-commerce and cloud computing corporation headquartered in Seattle, Washington.",
@@ -102,7 +105,13 @@ i18next
           sobreNosotrosP4: "Ayrıca, Borsa İstanbul, çevreye duyarlı şirketleri ve projeleri destekleyen yatırım ürünleri sunarak sürdürülebilirliği teşvik etmeye kendini adamıştır. Bu taahhüt, borsanın küresel finans arenasındaki rolünü güçlendirerek sürdürülebilir ekonomik kalkınmada önemli bir aktör olmasını sağlamaktadır.",
           buttons: {
             sobreNosotros: "Hakkımızda",
-            contacto: "İletişim",
+            contacto: "İletişim",            
+            desde: "Başlangıç",
+            hasta: "Bitiş",
+            escala: "Ölçek",
+            hora: "Saat",
+            dia: "Gün",
+            mes: "Ay",
           },
           footer: {
             sobreNosotros: "Hakkımızda",
