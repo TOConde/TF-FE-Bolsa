@@ -3,6 +3,7 @@ import './PieChart.css'
 import { useEffect, useState } from 'react';
 import { getAllEmpresas, getUltimaCotizacion } from '@/app/services/Empresa';
 import { useTranslation } from 'next-i18next';
+import SideLegend from './sideLegend/SideLegend';
 
 export const PieChart = () => {
   const { t } = useTranslation();
@@ -20,19 +21,13 @@ export const PieChart = () => {
         })
       );
 
-      const totalMercado = valoresTotales.reduce(
-        (acumulador, empresa) => acumulador + empresa.valorTotal,
-        0
-      );
-
       const datosParaGraficoTorta = [
         ["Empresa", "Valor Total"],
-        ...valoresTotales.map((empresa) => [
-          empresa.nombre,
-          empresa.valorTotal,
-        ]),
+        ...valoresTotales
+          .sort((a, b) => b.valorTotal - a.valorTotal)
+          .map((empresa) => [empresa.nombre, empresa.valorTotal]),
       ];
-      
+
       setData(datosParaGraficoTorta);
     } catch (error) {
       console.error("Error al obtener datos para el gráfico torta:", error);
@@ -61,14 +56,17 @@ export const PieChart = () => {
   };
 
   return (
-    <div className='containerPieChart'>
-      <Chart
-        chartType="PieChart"
-        data={data}
-        options={options}
-        width={"100%"}
-        height={"400px"}
-      />
+    <div className='mainContainerPieChart'>
+      <div className='containerGraficoPieChart'>
+        <Chart
+          chartType="PieChart"
+          data={data}
+          options={options}
+          width={"100%"}
+          height={"400px"}
+        />
+      </div>
+      <SideLegend data={data} />
     </div>
   );
 }

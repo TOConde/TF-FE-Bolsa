@@ -52,6 +52,7 @@ i18next
           },
           piechart: {
             titulo: "Participación en bolsa",
+            sideBarTitulo: "Detalle de Empresas"
           },
         },
       },
@@ -99,6 +100,7 @@ i18next
           },
           piechart: {
             titulo: "Stock market participation",
+            sideBarTitulo: "Company Details"
           },
         }
       },
@@ -146,6 +148,7 @@ i18next
           },
           piechart: {
             titulo: "Borsada katılım",
+            sideBarTitulo: "Şirket Detayları"
           },
         }
       }
