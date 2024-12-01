@@ -19,6 +19,7 @@ export const MainBody = () => {
   const [chartData, setChartData] = useState<Array<any>>([]);  const [fechaDesde, setFechaDesde] = useState("2024-06-01");
   const [fechaHasta, setFechaHasta] = useState("2024-10-07");
   const [escala, setEscala] = useState("mes");
+  const liraTurca = 34.66;
 
   const handleToggleView = (view: "empresa" | "bolsa") => {
     setIsBolsaActive(view === "bolsa");
@@ -75,10 +76,10 @@ export const MainBody = () => {
             ...allCotizaciones.flatMap((cotizaciones, index) =>
               cotizaciones.map((c) => [
                 `${c.fecha} (${selectedBolsas[index].code})`,
-                parseFloat(c.minimo.toString()),
-                parseFloat(c.apertura.toString()),
-                parseFloat(c.cierre.toString()),
-                parseFloat(c.maximo.toString()),
+                parseFloat(c.minimo.toString()) * liraTurca,
+                parseFloat(c.apertura.toString()) * liraTurca,
+                parseFloat(c.cierre.toString()) * liraTurca,
+                parseFloat(c.maximo.toString()) * liraTurca,
               ])
             )
           ];
@@ -99,10 +100,10 @@ export const MainBody = () => {
             ["Label", "Min-Max, Open-Close", "", "", ""],
             ...cotizaciones.map((c: Cotizacion) => [
               c.fecha,
-              parseFloat(c.minimo.toString()),
-              parseFloat(c.apertura.toString()),
-              parseFloat(c.cierre.toString()),
-              parseFloat(c.maximo.toString()),
+              parseFloat(c.minimo.toString()) * liraTurca,
+              parseFloat(c.apertura.toString()) * liraTurca,
+              parseFloat(c.cierre.toString()) * liraTurca,
+              parseFloat(c.maximo.toString()) * liraTurca,
             ])
           ];
           setChartData(formattedData);
