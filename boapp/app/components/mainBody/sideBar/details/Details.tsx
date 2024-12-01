@@ -11,7 +11,7 @@ export default function Details({ codEmpresa }: DetailsProps) {
   return (
     <div className='containerDetails'>
       <h3>{t('sideBar.detalles')}</h3>
-      <p>{t(`sideBar.${codEmpresa}`)}</p>
+      <p className='containerDetailsEmpresa'>{t(`sideBar.${codEmpresa}`)}</p>
     </div>
   );
 }

@@ -1,7 +1,47 @@
 .containerCotizations {
-  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.containerCotizationsIndex {
+  margin-left: 14px;
+  margin-top: 10px;
 }
 
 .containerIndex {
   margin-bottom: 8px !important;
+}
+
+.divEmpresa {
+  display: block;
+  padding: 0 8px;
+  margin-bottom: 8px;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.divEmpresa:hover {
+  transform: scale(1.08);  
+}
+
+.formCheckIndex {
+  background-color: white;
+  padding-right: 8px;
+  border-radius: 4px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.formCheckIndex label {
+  cursor: pointer;
+}
+
+.formCheckIndex:hover {
+  transform: scale(1.08);  
 }
