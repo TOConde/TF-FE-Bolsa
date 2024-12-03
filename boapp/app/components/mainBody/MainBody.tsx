@@ -29,6 +29,12 @@ export const MainBody = () => {
   };
 
   useEffect(() => {
+    if (isBolsaActive && escala === "hora") {
+      setEscala("mes");
+    }
+  }, [isBolsaActive, escala]);
+
+  useEffect(() => {
     const today = new Date();
     const threeMonthsAgo = new Date();
     threeMonthsAgo.setMonth(today.getMonth() - 3);
