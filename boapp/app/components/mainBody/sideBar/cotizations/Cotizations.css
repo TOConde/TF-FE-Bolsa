@@ -29,6 +29,11 @@
   transform: scale(1.08);  
 }
 
+.divEmpresa.selected {
+  transform: scale(1.08);
+  padding: 0 14px
+}
+
 .formCheckIndex {
   background-color: white;
   padding-right: 8px;
