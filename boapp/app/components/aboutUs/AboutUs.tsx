@@ -7,10 +7,12 @@ export default function AboutUs() {
   return (
     <div className='containerAboutUs'>
       <h1 id='about-us'>{t('sobreNosotrosTitulo')}</h1>
-      <p>{t('sobreNosotrosP1')}</p>
-      <p>{t('sobreNosotrosP2')}</p>
-      <p>{t('sobreNosotrosP3')}</p>
-      <p>{t('sobreNosotrosP4')}</p>
+      <div>
+        <p>{t('sobreNosotrosP1')}</p>
+        <p>{t('sobreNosotrosP2')}</p>
+        <p>{t('sobreNosotrosP3')}</p>
+        <p>{t('sobreNosotrosP4')}</p>
+      </div>
     </div>
   );
 }
