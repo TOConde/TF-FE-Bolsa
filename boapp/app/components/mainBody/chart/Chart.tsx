@@ -16,7 +16,7 @@ export const options = {
     title: 'Fecha',
   },
   vAxis: {
-    title: 'Valor',
+    title: 'Valor (1U$D 34.66₺)',
   }
 };
 
