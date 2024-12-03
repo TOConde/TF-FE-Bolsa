@@ -11,9 +11,11 @@ export default function DetailsBolsa({ name }: DetailsBolsaProps) {
   return (
     <div className='containerDetails'>
       <h3>{t('indiceSeleccionado')}</h3>
-      {name.map((n, index) => (
-        <p className='nombreBolsa' key={index}>{n}</p>
-      ))}
+      <div className='containerDetailsBolsas'>
+        {name.map((n, index) => (
+          <p className='nombreBolsa' key={index}>{n}</p>
+        ))}
+      </div>
     </div>
   );
 }
