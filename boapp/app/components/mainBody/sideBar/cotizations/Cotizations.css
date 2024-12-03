@@ -12,6 +12,8 @@
 
 .containerIndex {
   margin-bottom: 8px !important;
+  display: flex;
+  justify-content: center;
 }
 
 .divEmpresa {
