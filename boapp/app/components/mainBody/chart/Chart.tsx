@@ -18,10 +18,23 @@ export const CanddleChart = ({ chartData, chartType }: { chartData: Array<any>; 
     },
     hAxis: {
       title: t('ejeGraf.fecha'),
+      textPosition: 'out',
+      slantedText: false,
+      maxTextLines: 2,
     },
     vAxis: {
       title: t('ejeGraf.valor'),
-    }
+      textPosition: 'out',
+      viewWindow: {
+        min: 0, // Ajusta el rango del eje vertical si es necesario
+      },
+    },
+    chartArea: {
+      left: 130,
+      top: 160,
+      right: 200,
+      bottom: 100,
+    },
   };
   
   return (

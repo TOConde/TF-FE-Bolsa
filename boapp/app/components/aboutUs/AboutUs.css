@@ -5,6 +5,13 @@
   padding: 55px 100px;
 }
 
+.containerAboutUs h1 {
+  padding: 4px 12px;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
 .containerAboutUs p {
   padding: 15px 45px 0px 45px;
   text-align: center;
