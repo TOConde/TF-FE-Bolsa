@@ -1,0 +1,60 @@
+.containerCotizations {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.containerCotizationsIndex {
+  margin-left: 14px;
+  margin-top: 10px;
+}
+
+.containerIndex {
+  margin-bottom: 8px !important;
+  display: flex;
+  justify-content: center;
+}
+
+.divEmpresa {
+  display: block;
+  padding: 0 8px;
+  margin-bottom: 8px;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.divEmpresa:hover {
+  transform: scale(1.08);  
+}
+
+.divEmpresa.selected {
+  transform: scale(1.08);
+  padding: 0 14px
+}
+
+.formCheckIndex {
+  background-color: white;
+  padding-left: 8px;
+  border-radius: 4px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.formCheckIndex input {
+  margin-left: 0px !important;
+}
+
+.formCheckIndex label {
+  padding-left: 6px;
+  padding-right: 8px;
+  cursor: pointer;
+}
+
+.formCheckIndex:hover {
+  transform: scale(1.08);  
+}

@@ -1,0 +1,25 @@
+.containerSideLegend {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+}
+
+.containerSideLegend h3 {
+  padding: 4px 12px;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.containerSideLegend ul {
+  background-color: white;
+  list-style: none;
+  padding: 16px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.containerSideLegend li {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
